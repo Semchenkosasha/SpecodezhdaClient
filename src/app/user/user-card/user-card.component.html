@@ -1,0 +1,20 @@
+<div class="card card-body h-100 mb-3" data-aos="zoom-in">
+	<div class="row">
+		<div class="col-12 col-lg-6 my-1">
+			<input class="form-control" readonly type="text" value="{{user.username}}">
+		</div>
+		<div class="col-12 col-lg my-1">
+			<select (change)="updateRole()" [(ngModel)]="user.role" class="form-select" required>
+				<option *ngFor="let r of roles | keyvalue" [label]="r.value" [value]="r.key"></option>
+			</select>
+		</div>
+		<div class="col-12 col-lg my-1">
+			<button (click)="delete()"
+					class="btn btn-danger w-100"
+					type="button"
+					style="background-color: #b02a37; border-color: #96232f;">
+				Удалить
+			</button>
+		</div>
+	</div>
+</div>

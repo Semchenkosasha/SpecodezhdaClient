@@ -1,0 +1,67 @@
+<div class="container-fluid py-5">
+
+	<h1 data-aos="zoom-in">Добавить</h1>
+
+	<div class="row mt-4" data-aos="zoom-in">
+		<div class="col-auto">
+			<a appNavigate [navigateURL]="'inventories'" class="btn btn-primary fs-5">
+				<span class="bi-chevron-left"></span> Назад
+			</a>
+		</div>
+	</div>
+
+</div>
+
+<div class="container-fluid">
+
+	<div class="card card-body h-100" data-aos="zoom-in">
+		<form [formGroup]="inventoryFormGroup" (ngSubmit)="save()" class="row">
+			<div class="col-12 col-lg-6 mb-2">
+				<p class="fs-4 m-0">Наименование</p>
+				<input type="text" formControlName="name" class="form-control" minlength="1" maxlength="255">
+			</div>
+			<div class="col-12 col-lg-6 mb-2">
+				<p class="fs-4 m-0">Доступное количество</p>
+				<input type="number" formControlName="quantity" class="form-control" min="0" step="1" max="1000000">
+			</div>
+			<div class="col-12 col-lg-6 mb-2">
+				<p class="fs-4 m-0">Поставщик</p>
+				<input type="text" formControlName="provider" class="form-control" minlength="1" maxlength="255">
+			</div>
+			<div class="col-12 col-lg-6 mb-2">
+				<p class="fs-4 m-0">Срок службы, дней</p>
+				<input type="number" formControlName="lifetime" class="form-control" min="1" step="1" max="2000">
+			</div>
+			<div class="col-12 col-lg-6 mb-2">
+				<p class="fs-4 m-0">Должность</p>
+				<select (change)="changePositionId($event)" class="form-select">
+					<option disabled selected>Выберите должность</option>
+					@for (i of positions; track i.id) {
+						<option [value]="i.id" [label]="i.name"></option>
+					}
+				</select>
+			</div>
+			<div class="col-12 col-lg-6 mb-2">
+				<p class="fs-4 m-0">Категория</p>
+				<select (change)="changeCategoryId($event)" class="form-select">
+					<option disabled selected>Выберите категорию</option>
+					@for (i of categories; track i.id) {
+						<option [value]="i.id" [label]="i.name"></option>
+					}
+				</select>
+			</div>
+			<div class="col-12 mb-2">
+				<p class="fs-4 m-0">Картинка</p>
+				<input type="file" (change)="changeImg($event)" class="form-control" accept="image/*">
+			</div>
+			<div class="col-12 mb-2">
+				<p class="fs-4 m-0">Описание</p>
+				<textarea formControlName="description" class="form-control" minlength="1" maxlength="5000"></textarea>
+			</div>
+			<div class="col-12">
+				<button type="submit" class="btn btn-primary w-100" [disabled]="checkSubmit()">Добавить</button>
+			</div>
+		</form>
+	</div>
+
+</div>

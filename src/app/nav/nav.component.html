@@ -1,0 +1,87 @@
+<nav class="navbar bg-primary shadow flex-column align-items-start h-100" data-bs-theme="dark">
+	<div class="container-fluid flex-column">
+		<a appNavigate [navigateURL]="''" class="navbar-brand mb-3" role="button">WorkwearHub</a>
+
+		<div class="w-100">
+			<ul class="navbar-nav flex-column w-100">
+
+				<li class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="''" class="nav-link" role="button">Главная</a>
+				</li>
+				<li class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'workwears'" class="nav-link" role="button">Спецодежда</a>
+				</li>
+				<li class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'inventories'" class="nav-link" role="button">Инвентарь</a>
+				</li>
+
+				<li *ngIf="role === 'MANAGER'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'inventory_categories'" class="nav-link" role="button">Категории
+						инвентаря</a>
+				</li>
+
+				<li *ngIf="role !== 'NOT'" class="nav-item" data-aos="zoom-in">
+					<hr>
+				</li>
+
+				<li *ngIf="role !== 'NOT'" class="nav-item" data-aos="zoom-in">
+					<p class="m-0 fs-5 text-white">Заявки</p>
+				</li>
+
+				<li *ngIf="role !== 'NOT'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'workwears_orderings'" class="nav-link" role="button">Спецодежда</a>
+				</li>
+				<li *ngIf="role !== 'NOT'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'inventories_orderings'" class="nav-link" role="button">Инвентарь</a>
+				</li>
+
+				<li *ngIf="role === 'USER'" class="nav-item" data-aos="zoom-in">
+					<hr>
+				</li>
+
+				<li *ngIf="role === 'USER'" class="nav-item" data-aos="zoom-in">
+					<p class="m-0 fs-5 text-white">Мои</p>
+				</li>
+
+				<li *ngIf="role === 'USER'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'workwears_orderings_my'" class="nav-link" role="button">Спецодежда</a>
+				</li>
+				<li *ngIf="role === 'USER'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'inventories_orderings_my'" class="nav-link" role="button">Инвентарь</a>
+				</li>
+
+				<li *ngIf="role === 'ADMIN'" class="nav-item" data-aos="zoom-in">
+					<hr>
+				</li>
+				<li *ngIf="role === 'ADMIN'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'positions'" class="nav-link" role="button">Должности</a>
+				</li>
+				<li *ngIf="role === 'ADMIN'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'users'" class="nav-link" role="button">Пользователи</a>
+				</li>
+				<li *ngIf="role === 'ADMIN'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'stats'" class="nav-link" role="button">Аналитика</a>
+				</li>
+
+			</ul>
+
+			<ul class="navbar-nav flex-column w-100 mt-auto">
+				<li class="nav-item" data-aos="zoom-in">
+					<hr>
+				</li>
+				<li *ngIf="role !== 'NOT'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'profile'" class="nav-link" role="button">Профиль</a>
+				</li>
+				<li *ngIf="role === 'NOT'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'login'" class="nav-link" role="button">Вход</a>
+				</li>
+				<li *ngIf="role === 'NOT'" class="nav-item" data-aos="zoom-in">
+					<a appNavigate [navigateURL]="'reg'" class="nav-link" role="button">Регистрация</a>
+				</li>
+				<li *ngIf="role !== 'NOT'" class="nav-item" data-aos="zoom-in">
+					<a (click)="logout()" class="nav-link" role="button">Выход</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

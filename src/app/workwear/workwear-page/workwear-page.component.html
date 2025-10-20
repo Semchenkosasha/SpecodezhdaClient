@@ -1,0 +1,54 @@
+<div class="container-fluid py-5">
+
+	<h1 data-aos="zoom-in">{{ workwear.name }}</h1>
+
+	<div class="row mt-4" data-aos="zoom-in">
+		<div class="col-auto">
+			<a appNavigate [navigateURL]="'workwears'" class="btn btn-primary fs-5">
+				<span class="bi-chevron-left"></span> Назад
+			</a>
+		</div>
+		<div *ngIf="role === 'MANAGER'" class="col-auto">
+			<a appNavigate [navigateURL]="'workwear_update'" [queryParams]="{id:workwear.id}"
+			   class="btn btn-primary fs-5">
+				<span class="bi-chevron-up"></span> Обновить
+			</a>
+		</div>
+		<div *ngIf="role === 'MANAGER'" class="col-auto">
+			<a (click)="delete()" class="btn btn-primary fs-5">
+				<span class="bi-chevron-down"></span> Удалить
+			</a>
+		</div>
+		<div *ngIf="role === 'USER'" class="col-auto">
+			<a (click)="ordering()" class="btn btn-primary fs-5">
+				<span class="bi-plus"></span> Оформить заявку
+			</a>
+		</div>
+	</div>
+
+</div>
+
+<div class="container-fluid">
+
+	<div class="row fs-3">
+		<div class="col-12 col-lg-6 mb-4" data-aos="zoom-in">
+			<div class="card card-body h-100 h-100 d-flex justify-content-center">
+				<p class="m-0">{{ workwear.name }}</p>
+				<p class="m-0">{{ "Размер: " + workwear.sizeName }}</p>
+				<p class="m-0">{{ "Доступное количество: " + workwear.quantity }}</p>
+				<p class="m-0">{{ "Поставщик: " + workwear.provider }}</p>
+				<p class="m-0">{{ "Категория: " + workwear.categoryName }}</p>
+				<p class="m-0">{{ "Срок службы: " + workwear.lifetime + ' д.' }}</p>
+				<p class="m-0">{{ "Должность: " + workwear.positionName }}</p>
+				<p class="m-0">{{ "ФИО кладовщика: " + workwear.ownerFio }}</p>
+				<p class="m-0">{{ "Описание: " + workwear.description }}</p>
+			</div>
+		</div>
+		<div class="col-12 col-lg-6 mb-4" data-aos="zoom-in">
+			<div class="ratio ratio-1x1">
+				<img [src]="workwear.img" alt="img" class="object-fit-cover rounded shadow">
+			</div>
+		</div>
+	</div>
+
+</div>
